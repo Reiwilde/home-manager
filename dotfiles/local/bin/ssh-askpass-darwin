@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+LOG_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/ssh-askpass.log"
+PINENTRY='pinentry-mac'
+
+echo "$(date) - $1" >> $LOG_FILE
+
+if [[ $1 == 'Confirm user presence'* ]]; then
+  echo
+elif [[ $1 == *'Are you sure you want to continue connecting (yes/no/[fingerprint])? ' ]]; then
+  ANSWER=$(echo -e "SETDESC $1 \nCONFIRM" | $PINENTRY | tail -1)
+  if [[ $ANSWER == 'OK' ]]; then
+    echo 'yes'
+  else
+    echo 'no'
+  fi
+elif [[ $1 == *'Password: ' ]]; then
+  PIN=$(echo -e "SETDESC $1\nSETPROMPT Password \nGETPIN" | $PINENTRY | grep '^D' | awk '{print $2}')
+  echo $PIN
+elif [[ $1 == 'Enter PIN'* ]]; then
+  if [[ $(echo $1 | grep -o 'SHA256') ]]; then
+    KEYHASH=$(echo $1 | grep 'SHA256' | awk -F ':' '{print $2}')
+    echo "$(date) - KEYHASH: $KEYHASH" >> $LOG_FILE
+    PIN=$(echo -e "SETDESC $1 \nOPTION allow-external-password-cache\nSETKEYINFO $KEYHASH\nGETPIN" | $PINENTRY | grep '^D' | awk '{print $2}')
+  else
+    PIN=$(echo -e "SETDESC $1 \nGETPIN" | $PINENTRY | grep '^D' | awk '{print $2}')
+  fi
+
+  echo $PIN
+fi

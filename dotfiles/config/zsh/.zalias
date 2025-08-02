@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+alias ls='ls --color'
+
+alias g='git'
+alias gr='cd $(git rev-parse --show-toplevel)'
+
+alias vi='nvim'
+alias vim='nvim'
+
+alias start-phenom="ssh pi -f 'wakeonlan $MAC_ADDR_PHENOM'"
+alias start-remote-phenom="ssh remote-pi -f 'wakeonlan $MAC_ADDR_PHENOM'"
+alias start-ryzen="ssh pi -f 'wakeonlan $MAC_ADDR_RYZEN'"
+alias start-remote-ryzen="ssh remote-pi -f 'wakeonlan $MAC_ADDR_RYZEN'"

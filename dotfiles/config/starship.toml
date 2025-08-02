@@ -1,0 +1,43 @@
+# Get editor completions based on the config schema
+"$schema" = "https://starship.rs/config-schema.json"
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+format ="""$nix_shell$username$hostname$directory$git_branch$git_commit$git_state$git_status
+$character"""
+
+[character]
+error_symbol = " [➜](bold red)"
+success_symbol = " [➜](bold green)"
+vimcmd_symbol	= " [](bold green)"
+vimcmd_replace_one_symbol =	" [](bold purple)"
+vimcmd_replace_symbol	= " [](bold purple)"
+vimcmd_visual_symbol = " [](bold yellow)"
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style)"
+
+[hostname]
+format = "[$ssh_symbol$hostname]($style) "
+ssh_only = false
+style =	"bold blue"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[username]
+format = "[$user]($style)@"
+show_always = true
+style_root = "bold red"
+style_user = "bold green"
+
+[nix_shell]
+#format = "[$symbol$state( ($name))]($style) "
+format = "[\\(nix\\)]($style) "
+impure_msg = "impure"
+pure_msg = "pure"
+style = "bold blue"
+symbol = "❄️ "
+unknown_msg = ""

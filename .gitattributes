@@ -1,0 +1,2 @@
+dotfiles/local/bin/opencode-v0.3.78-linux-amd64 filter=lfs diff=lfs merge=lfs -text
+dotfiles/local/bin/opencode-v0.3.85-darwin-arm64 filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,41 @@
+#window {
+  background: #2e383c;
+}
+
+#outer-box {
+  margin: 5px;
+}
+
+#input {
+  background: #2e383c;
+  margin: 0 0 5px 0;
+}
+
+#input:focus {
+  border: 1px solid white;
+  color: white;
+}
+
+#input:focus image {
+  color: white;
+}
+
+#inner-box {}
+
+#entry {
+}
+
+#entry:selected {
+  background: #374145;
+  border: none;
+}
+
+#text {
+  color: #9da9a0;
+}
+
+#text:selected {
+  color: white;
+}
+
+#img {}
