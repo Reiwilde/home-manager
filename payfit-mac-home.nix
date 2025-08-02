@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "reiwilde";
-  home.homeDirectory = "/home/reiwilde";
+  home.username = "alexismorel";
+  home.homeDirectory = "/Users/alexismorel";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -38,14 +38,13 @@
     pkgs.btop
     pkgs.git
     pkgs.git-lfs
-    pkgs.gcc
-    pkgs.gnumake
+    pkgs.jo
     pkgs.luajit
     pkgs.neovim
     pkgs.nerd-fonts.jetbrains-mono
+    pkgs.rclone
     pkgs.starship
     pkgs.tmux
-    pkgs.wl-clipboard
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -63,22 +62,19 @@
     # '';
 
     # .local/bin
-    ".local/bin/opencode".source = dotfiles/local/bin/opencode-v0.3.78-linux-amd64;
-    ".local/bin/ssh-askpass".source = dotfiles/local/bin/ssh-askpass-linux;
+    ".local/bin/opencode".source = dotfiles/local/bin/opencode-v0.3.85-darwin-arm64;
+    ".local/bin/ssh-askpass".source = dotfiles/local/bin/ssh-askpass-darwin;
 
     # alacritty
     ".config/alacritty/alacritty.toml".source = dotfiles/config/alacritty/alacritty.toml;
     ".config/alacritty/everforest-dark-hard.toml".source = dotfiles/config/alacritty/everforest-dark-hard.toml;
 
     # bash
-    ".bash_profile".source = dotfiles/.bash_profile;
+    ".bash_profile".source = dotfiles/config/bash_macos/.bash_profile;
 
     # git
     ".config/git/config".source = dotfiles/config/git/config;
     ".config/git/gitignore".source = dotfiles/config/git/gitignore;
-
-    # hypr
-    ".config/hypr/hyprland.conf".source = dotfiles/config/hypr/hyprland.conf;
 
     # nix
     ".config/nix/nix.conf".source = dotfiles/config/nix/nix.conf;
@@ -90,18 +86,12 @@
     ".config/tmux/tmux.conf".source = dotfiles/config/tmux/tmux.conf;
     ".config/tmux/plugins/tpm".source = repos.tmux-tpm;
 
-    # uwsm
-    ".config/uwsm/env-hyprland".source = dotfiles/config/uwsm/env-hyprland;
-
-    # xdg-desktop-portal
-    ".config/xdg-desktop-portal/hyprland-portals.conf".source = dotfiles/config/xdg-desktop-portal/hyprland-portals.conf;
-
     # zsh
-    ".zshenv".source = dotfiles/.zshenv;
-    ".config/zsh/.zalias".source = dotfiles/config/zsh/.zalias;
-    ".config/zsh/.zlogout".source = dotfiles/config/zsh/.zlogout;
-    ".config/zsh/.zprofile".source = dotfiles/config/zsh/.zprofile;
-    ".config/zsh/.zshrc".source = dotfiles/config/zsh/.zshrc;
+    ".zshenv".source = dotfiles/config/zsh_macos/.zshenv;
+    ".config/zsh/.zalias".source = dotfiles/config/zsh_macos/.zalias;
+    ".config/zsh/.zlogout".source = dotfiles/config/zsh_macos/.zlogout;
+    ".config/zsh/.zprofile".source = dotfiles/config/zsh_macos/.zprofile;
+    ".config/zsh/.zshrc".source = dotfiles/config/zsh_macos/.zshrc;
     ".config/zsh/plugins/zsh-history-substring-search".source = repos.zsh-history-substring-search;
     ".config/zsh/plugins/zsh-vi-mode".source = repos.zsh-vi-mode;
   };
@@ -120,7 +110,7 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/reiwilde/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/alexismorel/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     # EDITOR = "emacs";

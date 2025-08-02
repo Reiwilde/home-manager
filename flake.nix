@@ -34,7 +34,29 @@
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
-            ./fedora-home.nix
+            ./fedora-vm-home.nix
+            {
+              _module.args = {
+                repos = {
+                  inherit tmux-tpm;
+                  inherit zsh-history-substring-search;
+                  inherit zsh-vi-mode;
+                };
+              };
+            }
+          ];
+
+          # Optionally use extraSpecialArgs
+          # to pass through arguments to home.nix
+        };
+
+        payfit-mac = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+
+          # Specify your home configuration modules here, for example,
+          # the path to your home.nix.
+          modules = [
+            ./payfit-mac-home.nix
             {
               _module.args = {
                 repos = {

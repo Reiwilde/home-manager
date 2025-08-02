@@ -9,7 +9,7 @@
   l = log
   mt = mergetool
   p = push
-	pf = push --force-with-lease --force-if-includes
+  pf = push --force-with-lease --force-if-includes
   pl = pull
   rb = rebase
   rba = rebase --abort
@@ -18,32 +18,32 @@
   rsh = reset --hard
   st = status
 [commit]
-	gpgsign = true
+  gpgsign = true
 [core]
-	excludesFile = ~/.config/git/gitignore
+  excludesFile = ~/.config/git/gitignore
 [diff]
-	tool = nvimdiff
+  tool = nvimdiff
 [difftool]
-	prompt = true
+  prompt = true
 [difftool "nvimdiff"]
   cmd = "nvim -d \"$LOCAL\" \"$REMOTE\" -c 'se ro' -c 'wincmd l'"
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  process = git-lfs filter-process
+  required = true
+  smudge = git-lfs smudge -- %f
 [gpg]
-	format = ssh
+  format = ssh
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [merge]
-	tool = nvimdiff
+  tool = nvimdiff
 [mergetool "nvimdiff"]
   #layout = "LOCAL,BASE,REMOTE / MERGED"
 [push]
-	autoSetupRemote = true
+  autoSetupRemote = true
 [user]
-	name = Alexis Morel
-	email = alexis.morel@payfit.com
+  email = alexis.morel@payfit.com
+  name = Alexis Morel
   signingkey = ~/.ssh/id_ed25519_sk.pub
   #signingkey = ~/.ssh/payfit_sk.pub
