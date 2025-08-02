@@ -128,4 +128,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Install fonts
+  fonts.fontconfig.enable = true;
 }

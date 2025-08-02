@@ -18,8 +18,8 @@ setopt SHARE_HISTORY
 autoload -Uz compinit && compinit
 
 # secrets
-if [[ -f "$XDG_CONFIG_HOME/zsh/.secrets" ]]; then
-  source "$XDG_CONFIG_HOME/zsh/.secrets"
+if [[ -f "$ZDOTDIR/.secrets" ]]; then
+  source "$ZDOTDIR/.secrets"
 fi
 
 # docker
@@ -45,7 +45,7 @@ fi
 eval "$(starship init zsh)"
 
 if [[ -d "$ZDOTDIR/plugins/zsh-history-substring-search" ]]; then
-  source "$DOTFILES/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+  source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 fi
 
 if [[ -d "$ZDOTDIR/plugins/zsh-vi-mode" ]]; then
@@ -66,6 +66,6 @@ if [[ -d "$ZDOTDIR/plugins/zsh-vi-mode" ]]; then
 fi
 
 # alias
-if [[ -f "$XDG_CONFIG_HOME/zsh/.zalias" ]]; then
-  source "$XDG_CONFIG_HOME/zsh/.zalias"
+if [[ -f "$ZDOTDIR/.zalias" ]]; then
+  source "$ZDOTDIR/.zalias"
 fi
