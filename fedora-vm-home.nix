@@ -1,6 +1,8 @@
 { config, pkgs, repos, ... }:
 let
-  linkDotfile = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/dotfiles/${path}";
+  homeManagerDir = "${config.home.homeDirectory}/.config/home-manager";
+  linkDotfile = path: config.lib.file.mkOutOfStoreSymlink "${homeManagerDir}/dotfiles/${path}";
+  linkSubmodule = path: config.lib.file.mkOutOfStoreSymlink "${homeManagerDir}/.submodules/${path}";
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -83,6 +85,9 @@ in {
 
     # nix
     ".config/nix/nix.conf".source = linkDotfile "config/nix/nix.conf";
+
+    # nvim
+    ".config/nvim".source = linkSubmodule "github.com/reiwilde/nvim";
 
     # starship
     ".config/starship.toml".source = linkDotfile "config/starship.toml";
