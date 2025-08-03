@@ -1,6 +1,7 @@
 { config, pkgs, repos, ... }:
-
-{
+let
+  linkDotfile = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/dotfiles/${path}";
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "alexismorel";
@@ -63,35 +64,35 @@
 
     # .local/bin
     ".local/bin/opencode".source = dotfiles/local/bin/opencode-v0.3.85-darwin-arm64;
-    ".local/bin/ssh-askpass".source = dotfiles/local/bin/ssh-askpass-darwin;
+    ".local/bin/ssh-askpass".source = linkDotfile "local/bin/ssh-askpass-darwin";
 
     # alacritty
-    ".config/alacritty/alacritty.toml".source = dotfiles/config/alacritty/alacritty.toml;
-    ".config/alacritty/everforest-dark-hard.toml".source = dotfiles/config/alacritty/everforest-dark-hard.toml;
+    ".config/alacritty/alacritty.toml".source = linkDotfile "config/alacritty/alacritty.toml";
+    ".config/alacritty/everforest-dark-hard.toml".source = linkDotfile "config/alacritty/everforest-dark-hard.toml";
 
     # bash
-    ".bash_profile".source = dotfiles/config/bash_macos/.bash_profile;
+    ".bash_profile".source = linkDotfile "config/bash_macos/bash_profile";
 
     # git
-    ".config/git/config".source = dotfiles/config/git/config;
-    ".config/git/gitignore".source = dotfiles/config/git/gitignore;
+    ".config/git/config".source = linkDotfile "config/git/config";
+    ".config/git/gitignore".source = linkDotfile "config/git/gitignore";
 
     # nix
-    ".config/nix/nix.conf".source = dotfiles/config/nix/nix.conf;
+    ".config/nix/nix.conf".source = linkDotfile "config/nix/nix.conf";
 
     # starship
-    ".config/starship.toml".source = dotfiles/config/starship.toml;
+    ".config/starship.toml".source = linkDotfile "config/starship.toml";
 
     # tmux
-    ".config/tmux/tmux.conf".source = dotfiles/config/tmux/tmux.conf;
+    ".config/tmux/tmux.conf".source = linkDotfile "config/tmux/tmux.conf";
     ".config/tmux/plugins/tpm".source = repos.tmux-tpm;
 
     # zsh
-    ".zshenv".source = dotfiles/config/zsh_macos/.zshenv;
-    ".config/zsh/.zalias".source = dotfiles/config/zsh_macos/.zalias;
-    ".config/zsh/.zlogout".source = dotfiles/config/zsh_macos/.zlogout;
-    ".config/zsh/.zprofile".source = dotfiles/config/zsh_macos/.zprofile;
-    ".config/zsh/.zshrc".source = dotfiles/config/zsh_macos/.zshrc;
+    ".zshenv".source = linkDotfile "config/zsh_macos/.zshenv";
+    ".config/zsh/.zalias".source = linkDotfile "config/zsh_macos/.zalias";
+    ".config/zsh/.zlogout".source = linkDotfile "config/zsh_macos/.zlogout";
+    ".config/zsh/.zprofile".source = linkDotfile "config/zsh_macos/.zprofile";
+    ".config/zsh/.zshrc".source = linkDotfile "config/zsh_macos/.zshrc";
     ".config/zsh/plugins/zsh-history-substring-search".source = repos.zsh-history-substring-search;
     ".config/zsh/plugins/zsh-vi-mode".source = repos.zsh-vi-mode;
   };
