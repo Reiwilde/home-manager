@@ -26,7 +26,13 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, tmux-tpm, zsh-history-substring-search, zsh-vi-mode }: {
+  outputs =
+    { self, nixpkgs, home-manager, ... } @ args: 
+    let
+      repos = {
+        inherit (args) tmux-tpm zsh-history-substring-search zsh-vi-mode;
+      };
+    in {
       homeConfigurations = {
         fedora-vm = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
@@ -37,11 +43,7 @@
             ./fedora-vm-home.nix
             {
               _module.args = {
-                repos = {
-                  inherit tmux-tpm;
-                  inherit zsh-history-substring-search;
-                  inherit zsh-vi-mode;
-                };
+                inherit repos;
               };
             }
           ];
@@ -59,11 +61,7 @@
             ./payfit-mac-home.nix
             {
               _module.args = {
-                repos = {
-                  inherit tmux-tpm;
-                  inherit zsh-history-substring-search;
-                  inherit zsh-vi-mode;
-                };
+                inherit repos;
               };
             }
           ];

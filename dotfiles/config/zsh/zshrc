@@ -1,10 +1,9 @@
 #!/usr/bin/env zsh
-#
-# nix
-export NIX_DEV_SHELL="$(which zsh)"
 
 if [[ $LSB_RELEASE_ID == 'Fedora' ]] && [[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then 
   source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+
+  export NIX_DEV_SHELL="$(which zsh)"
 fi
 
 HISTFILE="$ZDOTDIR/.zsh_history"

@@ -1,7 +1,0 @@
-# zsh
-.zsh_sessions/
-.zsh_history
-.zcompcache/
-.zcompdump*
-
-.secrets

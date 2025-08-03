@@ -1,6 +1,7 @@
 { config, pkgs, repos, ... }:
-
-{
+let
+  linkDotfile = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/home-manager/dotfiles/${path}";
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "reiwilde";
@@ -54,7 +55,7 @@
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    # ".screenrc".source = dotfile/screenrc;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -64,44 +65,44 @@
 
     # .local/bin
     ".local/bin/opencode".source = dotfiles/local/bin/opencode-v0.3.78-linux-amd64;
-    ".local/bin/ssh-askpass".source = dotfiles/local/bin/ssh-askpass-linux;
+    ".local/bin/ssh-askpass".source = linkDotfile "local/bin/ssh-askpass-linux";
 
     # alacritty
-    ".config/alacritty/alacritty.toml".source = dotfiles/config/alacritty/alacritty.toml;
-    ".config/alacritty/everforest-dark-hard.toml".source = dotfiles/config/alacritty/everforest-dark-hard.toml;
+    ".config/alacritty/alacritty.toml".source = linkDotfile "config/alacritty/alacritty.toml";
+    ".config/alacritty/everforest-dark-hard.toml".source = linkDotfile "config/alacritty/everforest-dark-hard.toml";
 
     # bash
-    ".bash_profile".source = dotfiles/config/bash/.bash_profile;
+    ".bash_profile".source = linkDotfile "config/bash/bash_profile";
 
     # git
-    ".config/git/config".source = dotfiles/config/git/config;
-    ".config/git/gitignore".source = dotfiles/config/git/gitignore;
+    ".config/git/config".source = linkDotfile "config/git/config";
+    ".config/git/gitignore".source = linkDotfile "config/git/gitignore";
 
     # hypr
-    ".config/hypr/hyprland.conf".source = dotfiles/config/hypr/hyprland.conf;
+    ".config/hypr/hyprland.conf".source = linkDotfile "config/hypr/hyprland.conf";
 
     # nix
-    ".config/nix/nix.conf".source = dotfiles/config/nix/nix.conf;
+    ".config/nix/nix.conf".source = linkDotfile "config/nix/nix.conf";
 
     # starship
-    ".config/starship.toml".source = dotfiles/config/starship.toml;
+    ".config/starship.toml".source = linkDotfile "config/starship.toml";
 
     # tmux
-    ".config/tmux/tmux.conf".source = dotfiles/config/tmux/tmux.conf;
+    ".config/tmux/tmux.conf".source = linkDotfile "config/tmux/tmux.conf";
     ".config/tmux/plugins/tpm".source = repos.tmux-tpm;
 
     # uwsm
-    ".config/uwsm/env-hyprland".source = dotfiles/config/uwsm/env-hyprland;
+    ".config/uwsm/env-hyprland".source = linkDotfile "config/uwsm/env-hyprland";
 
     # xdg-desktop-portal
-    ".config/xdg-desktop-portal/hyprland-portals.conf".source = dotfiles/config/xdg-desktop-portal/hyprland-portals.conf;
+    ".config/xdg-desktop-portal/hyprland-portals.conf".source = linkDotfile "config/xdg-desktop-portal/hyprland-portals.conf";
 
     # zsh
-    ".zshenv".source = dotfiles/config/zsh/.zshenv;
-    ".config/zsh/.zalias".source = dotfiles/config/zsh/.zalias;
-    ".config/zsh/.zlogout".source = dotfiles/config/zsh/.zlogout;
-    ".config/zsh/.zprofile".source = dotfiles/config/zsh/.zprofile;
-    ".config/zsh/.zshrc".source = dotfiles/config/zsh/.zshrc;
+    ".zshenv".source = linkDotfile "config/zsh/zshenv";
+    ".config/zsh/.zalias".source = linkDotfile "config/zsh/zalias";
+    ".config/zsh/.zlogout".source = linkDotfile "config/zsh/zlogout";
+    ".config/zsh/.zprofile".source = linkDotfile "config/zsh/zprofile";
+    ".config/zsh/.zshrc".source = linkDotfile "config/zsh/zshrc";
     ".config/zsh/plugins/zsh-history-substring-search".source = repos.zsh-history-substring-search;
     ".config/zsh/plugins/zsh-vi-mode".source = repos.zsh-vi-mode;
   };
