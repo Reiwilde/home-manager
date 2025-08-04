@@ -11,9 +11,22 @@ if [[ "$(uname -m)" == 'i386' ]] && [[ -f "/usr/local/bin/brew" ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
+# local/bin
+if [[ -d "$HOME/.local/bin" ]]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [[ "$(uname -m)" == 'arm64' ]] && [[ -d "$HOME/.local/bin/arm64" ]]; then
+  export PATH="$HOME/.local/bin/arm64:$PATH"
+fi
+
+if [[ "$(uname -m)" == 'i386' ]] && [[ -d "$HOME/.local/bin/i386" ]]; then
+  export PATH="$HOME/.local/bin/i386:$PATH"
+fi
+
 # ssh
-export SSH_ASKPASS='ssh-askpass'
+export SSH_ASKPASS=ssh-askpass
 export SSH_ASKPASS_REQUIRE='force'
 
 # ssh-agent
-eval "$(ssh-agent -s)" 1> /dev/null
+eval "$(ssh-agent -s)"
