@@ -93,11 +93,11 @@ in {
     ".config/tmux/plugins/tpm".source = repos.tmux-tpm;
 
     # zsh
-    ".zshenv".source = linkDotfile "config/zsh_macos/.zshenv";
-    ".config/zsh/.zalias".source = linkDotfile "config/zsh_macos/.zalias";
-    ".config/zsh/.zlogout".source = linkDotfile "config/zsh_macos/.zlogout";
-    ".config/zsh/.zprofile".source = linkDotfile "config/zsh_macos/.zprofile";
-    ".config/zsh/.zshrc".source = linkDotfile "config/zsh_macos/.zshrc";
+    ".zshenv".source = linkDotfile "config/zsh_macos/zshenv";
+    ".config/zsh/.zalias".source = linkDotfile "config/zsh_macos/zalias";
+    ".config/zsh/.zlogout".source = linkDotfile "config/zsh_macos/zlogout";
+    ".config/zsh/.zprofile".source = linkDotfile "config/zsh_macos/zprofile";
+    ".config/zsh/.zshrc".source = linkDotfile "config/zsh_macos/zshrc";
     ".config/zsh/plugins/zsh-history-substring-search".source = repos.zsh-history-substring-search;
     ".config/zsh/plugins/zsh-vi-mode".source = repos.zsh-vi-mode;
   };
