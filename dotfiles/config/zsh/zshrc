@@ -27,19 +27,6 @@ export DOCKER_SOCK="$XDG_RUNTIME_DIR/docker.sock"
 # aws sam
 export SAM_CLI_TELEMETRY=0
 
-# cargo
-export CARGO_HOME="$USER_APPS_HOME/cargo"
-export RUSTUP_HOME="$USER_APPS_HOME/rustup"
-
-if [[ -f "$CARGO_HOME/env" ]]; then
-  source $CARGO_HOME/env
-fi
-
-# local/bin
-if [[ -d "$HOME/.local/bin" ]]; then
-  export PATH="$HOME/.local/bin:$PATH"
-fi
-
 # shell
 eval "$(starship init zsh)"
 

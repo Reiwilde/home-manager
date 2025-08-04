@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+# local/bin
+if [[ -d "$HOME/.local/bin" ]]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
 if [[ "$(lsb_release -si)" == 'Fedora' ]]; then
   # uwsm
   if [[ ! -d "$XDG_CACHE_HOME/uwsm" ]]; then
