@@ -38,6 +38,7 @@ in {
     #   echo "Hello, ${config.home.username}!"
     # '')
 
+    pkgs.ansible
     pkgs.btop
     pkgs.git
     pkgs.git-lfs

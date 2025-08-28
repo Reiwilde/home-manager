@@ -29,4 +29,4 @@ export SSH_ASKPASS=ssh-askpass
 export SSH_ASKPASS_REQUIRE='force'
 
 # ssh-agent
-eval "$(ssh-agent -s)"
+eval "$(ssh-agent -s)" 1> /dev/null
