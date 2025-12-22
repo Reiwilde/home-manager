@@ -1,12 +1,14 @@
 [alias]
   a = add
   br = branch
+  c = commit
   co = checkout
   cr = cherry-pick
-  cm = commit
+  cm = commit --message
   dt = difftool
   ft = fetch
   l = log
+  m = merge
   mt = mergetool
   p = push
   pf = push --force-with-lease --force-if-includes

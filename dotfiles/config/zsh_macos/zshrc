@@ -29,7 +29,7 @@ if [[ -d "$ZDOTDIR/plugins/zsh-history-substring-search" ]]; then
   source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 fi
 
-if [[ -d "$ZDOTDIR/plugins//zsh-vi-mode" ]]; then
+if [[ -d "$ZDOTDIR/plugins/zsh-vi-mode" ]]; then
   function zvm_config() {
     ZVM_LAZY_KEYBINDINGS=false
   }

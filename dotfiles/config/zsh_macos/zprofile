@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+# nix
+if [[ "$(uname -s)" == "Darwin" ]] && [[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]]; then
+  source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+
 # brew
 if [[ "$(uname -m)" == 'arm64' ]] && [[ -f "/opt/homebrew/bin/brew" ]]; then
   export HOMEBREW_NO_ANALYTICS=1
