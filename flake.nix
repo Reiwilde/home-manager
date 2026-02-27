@@ -1,23 +1,19 @@
 {
   description = "Home Manager configuration of reiwilde";
 
-  #nixConfig = {
-  #  extra-substituters = [
-  #    "https://nix-community.cachix.org"
-  #  ];
-
-  #  extra-trusted-public-keys = [
-  #    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-  #  ];
-  #};
-
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     tmux-tpm = {
@@ -37,20 +33,20 @@
   };
 
   outputs =
-    { self, nixpkgs, home-manager, ... } @ args: 
+    { self, home-manager, home-manager-unstable, nixpkgs, nixpkgs-unstable, ... } @ args: 
     let
       repos = {
         inherit (args) tmux-tpm zsh-history-substring-search zsh-vi-mode;
       };
     in {
       homeConfigurations = {
-        fedora-vm = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        payfit-mac = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
 
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
-            ./fedora-vm-home.nix
+            ./payfit-mac-home.nix
             {
               _module.args = {
                 inherit repos;
@@ -62,13 +58,13 @@
           # to pass through arguments to home.nix
         };
 
-        payfit-mac = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+        ryzen0-nixos = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
-            ./payfit-mac-home.nix
+            ./ryzen0-nixos-home.nix
             {
               _module.args = {
                 inherit repos;

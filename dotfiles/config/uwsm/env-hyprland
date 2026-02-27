@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export AQ_DRM_DEVICES="/dev/dri/card1"
+#export AQ_DRM_DEVICES="/dev/dri/card1"
 
 #export XCURSOR_SIZE=12
 #export HYPRCURSOR_SIZE=12

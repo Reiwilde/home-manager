@@ -7,7 +7,6 @@ export USER_UID="$(id -u)"
 # release
 export LSB_RELEASE_ID="$(lsb_release -si)"
 
-export DOTFILES="$HOME/.dotfiles"
 export EDITOR='nvim'
 
 # xdg
