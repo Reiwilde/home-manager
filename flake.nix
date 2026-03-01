@@ -16,6 +16,8 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
     tmux-tpm = {
       flake = false;
       url = "github:tmux-plugins/tpm";
@@ -33,7 +35,7 @@
   };
 
   outputs =
-    { self, home-manager, home-manager-unstable, nixpkgs, nixpkgs-unstable, ... } @ args: 
+    { self, home-manager, home-manager-unstable, hyprland, nixpkgs, nixpkgs-unstable, ... } @ args: 
     let
       repos = {
         inherit (args) tmux-tpm zsh-history-substring-search zsh-vi-mode;
@@ -67,6 +69,7 @@
             ./ryzen0-nixos-home.nix
             {
               _module.args = {
+                inherit hyprland;
                 inherit repos;
               };
             }
