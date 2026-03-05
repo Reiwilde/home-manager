@@ -55,13 +55,13 @@
       };
     in {
       homeConfigurations = {
-        payfit-mac = home-manager.lib.homeManagerConfiguration {
+        payfit-macos = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."aarch64-darwin";
 
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
-            ./payfit-mac-home.nix
+            ./payfit-macos-home.nix
             {
               _module.args = {
                 inherit repos;

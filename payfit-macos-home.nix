@@ -1,6 +1,6 @@
 { config, pkgs, repos, ... }:
 let
-  homeManagerDir = "${config.home.homeDirectory}/.config/home-manager";
+  homeManagerDir = "${config.home.homeDirectory}/Workspaces/reiwilde/home-manager";
   linkDotfile = path: config.lib.file.mkOutOfStoreSymlink "${homeManagerDir}/dotfiles/${path}";
   linkSubmodule = path: config.lib.file.mkOutOfStoreSymlink "${homeManagerDir}/.submodules/${path}";
 in {
@@ -16,7 +16,7 @@ in {
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "25.05"; # Please read the comment before changing.
+  home.stateVersion = "25.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -67,7 +67,6 @@ in {
     # '';
 
     # .local/bin
-    ".local/bin/opencode".source = dotfiles/local/bin/opencode-v0.3.85-darwin-arm64;
     ".local/bin/ssh-askpass".source = linkDotfile "local/bin/ssh-askpass-darwin";
 
     # alacritty
