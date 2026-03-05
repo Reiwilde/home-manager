@@ -4,7 +4,7 @@
 // https://niri-wm.github.io/niri/Configuration:-Introduction
 
 prefer-no-csd
-screenshot-path "~/Pictures/Screenshots/screenshot_from_%Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/screenshots/screenshot_from_%Y-%m-%d_%H-%M-%S.png"
 spawn-at-startup "dms" "run"
 
 // https://niri-wm.github.io/niri/Configuration:-Animations

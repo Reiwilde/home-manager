@@ -101,6 +101,7 @@ in {
       # '')
 
       alacritty
+      dragon-drop
       flatpak
       gcc
       git
@@ -109,7 +110,8 @@ in {
       luajit
       nerd-fonts.jetbrains-mono
       niri
-      pinentry-gnome3
+      opencode
+      pinentry-qt
       starship
       tmux
 
@@ -145,6 +147,7 @@ in {
     #
     sessionVariables = {
       # EDITOR = "emacs";
+      #XDG_DATA_DIRS = "$XDG_DATA_HOME/flatpak/exports/share:$XDG_DATA_DIRS";
     };
   };
 

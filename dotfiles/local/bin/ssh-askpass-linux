@@ -2,7 +2,7 @@
 
 LOG_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/ssh-askpass.log"
 
-PINENTRY='pinentry-gnome3'
+PINENTRY='pinentry-qt'
 
 echo "$(date) - $1" >> $LOG_FILE
 
