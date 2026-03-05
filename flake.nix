@@ -16,7 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     tmux-tpm = {
       flake = false;
@@ -35,8 +38,18 @@
   };
 
   outputs =
-    { self, home-manager, home-manager-unstable, hyprland, nixpkgs, nixpkgs-unstable, ... } @ args: 
+    {
+      self,
+      dms,
+      home-manager,
+      home-manager-unstable,
+      nixpkgs,
+      nixpkgs-unstable,
+      ...
+    } @ args: 
     let
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      pkgs-unstable = nixpkgs-unstable.legacyPackages."x86_64-linux";
       repos = {
         inherit (args) tmux-tpm zsh-history-substring-search zsh-vi-mode;
       };
@@ -61,18 +74,19 @@
         };
 
         ryzen0-nixos = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          inherit pkgs;
 
           # Specify your home configuration modules here, for example,
           # the path to your home.nix.
           modules = [
-            ./ryzen0-nixos-home.nix
             {
               _module.args = {
-                inherit hyprland;
+                inherit pkgs-unstable;
                 inherit repos;
               };
             }
+            dms.homeModules.dank-material-shell
+            ./ryzen0-nixos-home.nix
           ];
 
           # Optionally use extraSpecialArgs

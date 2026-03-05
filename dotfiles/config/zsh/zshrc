@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [[ $LSB_RELEASE_ID == 'NixOS' ]]; then 
+if [[ $LSB_RELEASE_ID == '"NixOS"' ]]; then 
   export NIX_DEV_SHELL="$(which zsh)"
 fi
 
