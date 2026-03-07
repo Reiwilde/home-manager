@@ -1,20 +1,19 @@
 #!/usr/bin/env zsh
 
+if [[ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]]; then
+  source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+fi
+
+if [[ -f "$HOME/.nix-profile/etc/profile.d/flatpak.sh" ]]; then
+  source "$HOME/.nix-profile/etc/profile.d/flatpak.sh"
+fi
+
 # id
 export USER_GID="$(id -g)"
 export USER_UID="$(id -u)"
 
 # release
 export LSB_RELEASE_ID="$(lsb_release -si)"
-
-export EDITOR='nvim'
-
-# xdg
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_DATA_DIRS="$XDG_DATA_HOME/flatpak/exports/share:$XDG_DATA_DIRS"
-export XDG_STATE_HOME="$HOME/.local/state"
 
 export USER_APPS_HOME="$HOME/.local/apps"
 

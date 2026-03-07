@@ -114,6 +114,7 @@ in {
       pinentry-qt
       starship
       tmux
+      xwayland-satellite
 
       # payfit
       _1password-cli
@@ -146,8 +147,13 @@ in {
     #  /etc/profiles/per-user/reiwilde/etc/profile.d/hm-session-vars.sh
     #
     sessionVariables = {
-      # EDITOR = "emacs";
+      EDITOR = "nvim";
+      XDG_CACHE_HOME = "$HOME/.cache";
+      XDG_CONFIG_HOME = "$HOME/.config";
+      XDG_DATA_HOME = "$HOME/.local/share";
       #XDG_DATA_DIRS = "$XDG_DATA_HOME/flatpak/exports/share:$XDG_DATA_DIRS";
+      XDG_DOWNLOAD_DIR = "$HOME/Downloads";
+      XDG_STATE_HOME = "$HOME/.local/state";
     };
   };
 
@@ -162,18 +168,26 @@ in {
     };
   };
 
+  services = {
+    ssh-agent.enable = true;
+  };
+
   xdg = {
     portal = {
       enable = true;
 
+      xdgOpenUsePortal = true;
+
       config = {
         niri.default = [
+          "gtk"
           "gnome"
         ];
       };
 
       extraPortals = with pkgs; [
         xdg-desktop-portal-gnome
+        xdg-desktop-portal-gtk
       ];
     };
   };
