@@ -114,9 +114,10 @@ in {
       pinentry-qt
       starship
       tmux
+      tree
       xwayland-satellite
 
-      # payfit
+      # payfit{
       _1password-cli
     ];
 
@@ -130,31 +131,9 @@ in {
 
     sessionPath = [];
 
-    # Home Manager can also manage your environment variables through
-    # 'home.sessionVariables'. These will be explicitly sourced when using a
-    # shell provided by Home Manager. If you don't want to manage your shell
-    # through Home Manager then you have to manually source 'hm-session-vars.sh'
-    # located at either
-    #
-    #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-    #
-    # or
-    #
-    #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-    #
-    # or
-    #
-    #  /etc/profiles/per-user/reiwilde/etc/profile.d/hm-session-vars.sh
-    #
     sessionVariables = {
       EDITOR = "nvim";
-      SSH_AUTH_SOCK = "/run/user/1000/ssh-agent";
-      XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      #XDG_DATA_DIRS = "$XDG_DATA_HOME/flatpak/exports/share:$XDG_DATA_DIRS";
-      XDG_DOWNLOAD_DIR = "$HOME/Downloads";
-      XDG_STATE_HOME = "$HOME/.local/state";
+      SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/${config.services.ssh-agent.socket}";
     };
   };
 
@@ -170,10 +149,17 @@ in {
   };
 
   services = {
-    ssh-agent.enable = true;
+    ssh-agent = {
+      enable = true;
+      socket = "ssh-agent";
+    };
   };
 
   xdg = {
+    enable = true;
+
+    userDirs.enable = true;
+
     portal = {
       enable = true;
 

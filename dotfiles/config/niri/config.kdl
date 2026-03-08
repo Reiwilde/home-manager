@@ -291,7 +291,8 @@ input {
 
 // https://niri-wm.github.io/niri/Configuration:-Layout
 layout {
-  center-focused-column "always"
+  always-center-single-column
+  center-focused-column "on-overflow"
   gaps 12
 
   border {

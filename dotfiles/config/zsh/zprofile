@@ -16,5 +16,4 @@ fi
 #if [[ -z $SSH_TTY ]]; then
 #  export SSH_ASKPASS='ssh-askpass'
 #  export SSH_ASKPASS_REQUIRE='force'
-#  eval "$(ssh-agent -s)" 1> /dev/null
 #fi
