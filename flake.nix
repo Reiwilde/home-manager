@@ -92,6 +92,25 @@
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
         };
+
+        wsl-nixos = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          # Specify your home configuration modules here, for example,
+          # the path to your home.nix.
+          modules = [
+            {
+              _module.args = {
+                inherit pkgs-unstable;
+                inherit repos;
+              };
+            }
+            ./wsl-nixos-home.nix
+          ];
+
+          # Optionally use extraSpecialArgs
+          # to pass through arguments to home.nix
+        };
       };
     };
 }
