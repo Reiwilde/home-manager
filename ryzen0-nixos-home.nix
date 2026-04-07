@@ -140,6 +140,7 @@ in {
 
     sessionVariables = {
       EDITOR = "nvim";
+      NIXOS_OZONE_WL = "1";
       OPENCODE_DISABLE_LSP_DOWNLOAD = "true";
       #SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/${config.services.ssh-agent.socket}";
     };
@@ -160,11 +161,25 @@ in {
           ungoogled = true;
         }
       );
+
+      commandLineArgs = [
+        "--disable-accelerated-video-decode"
+        "--disable-accelerated-video-encode"
+      ];
     };
 
     dank-material-shell = {
       enable = true;
       dgop.package = pkgs-unstable.dgop;
+    };
+
+    librewolf = {
+      enable = true;
+
+      settings = {
+        "privacy.clearOnShutdown.history" = false;
+        "privacy.clearOnShutdown.cookies" = false;
+      };
     };
 
     obs-studio = {
