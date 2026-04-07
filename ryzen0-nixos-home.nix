@@ -140,6 +140,7 @@ in {
 
     sessionVariables = {
       EDITOR = "nvim";
+      OPENCODE_DISABLE_LSP_DOWNLOAD = "true";
       #SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/${config.services.ssh-agent.socket}";
     };
   };
