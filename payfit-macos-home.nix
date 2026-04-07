@@ -45,6 +45,7 @@ in {
 
       # .local/bin
       ".local/bin/ssh-askpass".source = linkDotfile "local/bin/ssh-askpass-darwin";
+      ".local/bin/opencode".source = linkDotfile "local/bin/opencode-v1.3.13-darwin-arm64";
 
       # alacritty
       ".config/alacritty/alacritty.toml".source = linkDotfile "config/alacritty/alacritty.toml";
@@ -103,20 +104,23 @@ in {
 
       ansible
       btop
+      fd
+      gh
       git
       git-lfs
       jo
       luajit
       neovim
       nerd-fonts.jetbrains-mono
-      opencode
       rclone
+      ripgrep
       starship
       tmux
     ];
 
     sessionVariables = {
       EDITOR = "nvim";
+      OPENCODE_DISABLE_LSP_DOWNLOAD = "true";
       SSH_AUTH_SOCK = "$(getconf DARWIN_USER_TEMP_DIR)/${config.services.ssh-agent.socket}";
     };
   };
