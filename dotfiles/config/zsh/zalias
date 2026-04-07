@@ -1,14 +1,12 @@
 #!/usr/bin/env zsh
 
+alias e="$EDITOR"
 alias less='less -R'
 alias ls='ls --color'
 alias tree='tree -C'
 
 alias g='git'
 alias gr='cd $(git rev-parse --show-toplevel)'
-
-alias vi='nvim'
-alias vim='nvim'
 
 alias start-wm='niri-session &> $HOME/.cache/niri.0.log'
 
