@@ -44,6 +44,7 @@ in {
 
       # .local/bin
       ".local/bin/ssh-askpass".source = linkDotfile "local/bin/ssh-askpass-linux";
+      ".local/bin/opencode".source = linkDotfile "local/bin/opencode-v1.3.13-linux-amd64";
 
       # alacritty
       ".config/alacritty/alacritty.toml".source = linkDotfile "config/alacritty/alacritty.toml";
@@ -61,6 +62,9 @@ in {
 
       # nvim
       ".config/nvim".source = linkSubmodule "github.com/reiwilde/nvim";
+
+      # nixpkgs
+      ".config/nixpkgs/config.nix".source = linkDotfile "config/nixpkgs/config.nix";
 
       # starship
       ".config/starship.toml".source = linkDotfile "config/starship.toml";
@@ -101,17 +105,20 @@ in {
       # '')
 
       alacritty
+      cider-2
       dragon-drop
+      fd
       flatpak
       gcc
+      gh
       git
       gnumake
       lsb-release
       luajit
       nerd-fonts.jetbrains-mono
       niri
-      opencode
       pinentry-qt
+      ripgrep
       starship
       tmux
       tree
@@ -133,24 +140,50 @@ in {
 
     sessionVariables = {
       EDITOR = "nvim";
-      SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/${config.services.ssh-agent.socket}";
+      #SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/${config.services.ssh-agent.socket}";
     };
   };
 
   nixpkgs = {
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+    };
   };
 
   programs = {
+    chromium = {
+      enable = true;
+      package = (
+        pkgs.chromium.override {
+          enableWideVine = true;
+          ungoogled = true;
+        }
+      );
+    };
+
     dank-material-shell = {
       enable = true;
       dgop.package = pkgs-unstable.dgop;
+    };
+
+    obs-studio = {
+      enable = true;
+
+      package = (
+        pkgs.obs-studio.override {
+          cudaSupport = true;
+        }
+      );
+
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-backgroundremoval
+      ];
     };
   };
 
   services = {
     ssh-agent = {
-      enable = true;
+      enable = false;
       socket = "ssh-agent";
     };
   };
