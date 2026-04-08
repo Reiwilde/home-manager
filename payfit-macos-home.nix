@@ -45,7 +45,7 @@ in {
 
       # .local/bin
       ".local/bin/ssh-askpass".source = linkDotfile "local/bin/ssh-askpass-darwin";
-      ".local/bin/opencode".source = linkDotfile "local/bin/opencode-v1.3.13-darwin-arm64";
+      ".local/bin/opencode".source = linkDotfile "local/bin/opencode";
 
       # alacritty
       ".config/alacritty/alacritty.toml".source = linkDotfile "config/alacritty/alacritty.toml";
