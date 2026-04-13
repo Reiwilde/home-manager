@@ -122,6 +122,7 @@ in {
       starship
       tmux
       tree
+      vlc
       xwayland-satellite
 
       # payfit{
