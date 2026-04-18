@@ -14,3 +14,7 @@ alias start-phenom="ssh pi -f 'wakeonlan $MAC_ADDR_PHENOM'"
 alias start-remote-phenom="ssh remote-pi -f 'wakeonlan $MAC_ADDR_PHENOM'"
 alias start-ryzen="ssh pi -f 'wakeonlan $MAC_ADDR_RYZEN'"
 alias start-remote-ryzen="ssh remote-pi -f 'wakeonlan $MAC_ADDR_RYZEN'"
+
+if [[ -v "WSL_DISTRO_NAME" ]]; then
+  alias ssh="ssh.exe"
+fi

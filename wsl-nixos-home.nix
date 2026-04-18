@@ -38,7 +38,7 @@ in {
       # '';
 
       # .local/bin
-      #".local/bin/ssh-askpass".source = linkDotfile "local/bin/ssh-askpass-linux";
+      ".local/bin/opencode".source = linkDotfile "local/bin/opencode-linux-amd64";
 
       # alacritty
       #".config/alacritty/alacritty.toml".source = linkDotfile "config/alacritty/alacritty.toml";
@@ -92,12 +92,14 @@ in {
       #   echo "Hello, ${config.home.username}!"
       # '')
 
+      fd
       gcc
       git
       gnumake
       lsb-release
       luajit
-      opencode
+      pinentry-qt
+      ripgrep
       starship
       tmux
       tree
@@ -110,6 +112,7 @@ in {
 
     sessionVariables = {
       EDITOR = "nvim";
+      OPENCODE_DISABLE_LSP_DOWNLOAD = "true";
       WIN_SYSTEM_DISK = "c";
       WIN_USER = "Reiwilde";
       WIN_HOME = "${config.home.sessionVariables.WIN_SYSTEM_DISK}:/Users/${config.home.sessionVariables.WIN_USER}";
