@@ -1,2 +1,3 @@
+!*.zstd
+
 opencode*
-!opencode-*.zstd
