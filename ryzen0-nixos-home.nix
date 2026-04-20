@@ -105,6 +105,7 @@ in {
       # '')
 
       alacritty
+      bruno
       cider-2
       dragon-drop
       fd
@@ -123,6 +124,7 @@ in {
       tmux
       tree
       vlc
+      wl-clipboard
       xwayland-satellite
 
       # payfit{
@@ -195,6 +197,10 @@ in {
       plugins = with pkgs.obs-studio-plugins; [
         obs-backgroundremoval
       ];
+    };
+
+    vscode = {
+      enable = true;
     };
   };
 
